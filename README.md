@@ -1,53 +1,46 @@
-# INSY6112 FINAL EXAM SUBMISSION  
+# INSY6112 Final Exam Submission  
 **Student:** Coherence Tasimba Mlambo  
 **Student Number:** ST10448252  
 
 ---
 
-## Table of Contents
-1. [Question 1 – Surrogate Keys and Relationships](#question-1)
-2. [Question 2 – Database Normalization](#question-2)
-3. [Question 3 – SQL Table Creation and Queries](#question-3)
-4. [Question 4 – MongoDB Operations](#question-4)
+## Summary of Submission
+
+### Question 1 – Surrogate Keys & Relationships
+- Created surrogate primary keys for Faculty, Qualification, Module, NQF_Level, and Qualification_Module.  
+- Implemented relationships:  
+  - Faculty → Qualification (1:M)  
+  - Qualification ↔ Module (M:N) via Qualification_Module  
+  - NQF_Level → Module (1:M)  
+- Resolved the many-to-many relationship between Qualification and Module using a junction table.
 
 ---
 
-## Question 1 – Surrogate Keys and Relationships
-
-### Surrogate Primary Keys
-| Table | Primary Key | Attributes |
-|-------|------------|------------|
-| Faculty | faculty_id | faculty_name |
-| Qualification | qualification_id | qualification_name |
-| Module | module_id | module_name |
-| NQF_Level | nqf_level_id | level_description |
-| Qualification_Module | qualification_module_id | module_code |
-
-### Relationships Implemented
-- **Faculty (1) → Qualification (Many)** via `faculty_id` (FK)  
-- **Qualification (Many) → Module (Many)** resolved using `Qualification_Module` junction table  
-- **NQF_Level (1) → Module (Many)** via `nqf_level_id` (FK)  
-
-### Many-to-Many Relationship Resolution
-- The M:N relationship between Qualification and Module is resolved using the `Qualification_Module` table, which stores the specific `module_code` for each qualification-module combination.
+### Question 2 – Database Normalization
+- **1NF → 2NF:** Removed partial dependencies by creating CHEF and CHEF_RESTAURANT tables.  
+- **2NF → 3NF:** Checked for transitive dependencies; tables already in 3NF.  
+- **Extended 3NF:** Introduced RESTAURANT and RESTAURANT_GROUP tables to remove transitive dependencies.
 
 ---
 
-## Question 2 – Database Normalization
+### Question 3 – SQL Tables & Queries
+- Created **Patient, Doctor, and Appointment** tables with proper primary and foreign keys.  
+- Inserted sample data.  
+- Queries implemented:  
+  - Display appointments within a date range.  
+  - Count total appointments per patient.  
+  - View patients assigned to a specific doctor (Doctor ID = 2).
 
-### Step 1: Analysis of 1NF Table
-- The table is in **1NF** (no repeating groups, each cell has a single value).  
-- **Composite Primary Key:** `(ChefID, Restaurant)`  
-- **Partial Dependency:** `ChefID → ChefName` (violates 2NF)  
+---
 
-### Q2.1: Normalization to Second Normal Form (2NF)
-- **Solution:** Remove partial dependencies by splitting the table.
+### Question 4 – MongoDB Operations
+- Created database `members_st10448252` and `members` collection.  
+- Inserted sample member documents.  
+- Queries implemented:  
+  - Display all documents.  
+  - List members born after 1979-01-12.
 
-**Tables in 2NF:**  
-1. **CHEF**  
-   | ChefID (PK) | ChefName |
-   |------------|----------|  
-2. **CHEF_RESTAURANT**  
-   | ChefID (FK, PK) | Restaurant (PK) |
+---
 
-**Dependency Diagram:**  
+**End of Submission**  
+**Submitted by:** Coherence Tasimba Mlambo (ST10448252)
